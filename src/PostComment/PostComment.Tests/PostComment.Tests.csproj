@@ -15,6 +15,7 @@
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Integration\" />
+    <Folder Include="Presentation\" />
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using PostComment.Core.Service;
 
 namespace PostComment.Api
 {
@@ -24,6 +25,10 @@ namespace PostComment.Api
                     Description = "API Test - Post and Comments"
                 });
             });
+
+            // Service DI
+            //services.AddSingleton<IUsersService, UsersService>();
+            services.AddSingleton<IPostItemService, PostItemService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
