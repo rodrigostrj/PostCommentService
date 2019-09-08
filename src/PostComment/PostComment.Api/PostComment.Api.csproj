@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PostComment.Core\PostComment.Core.csproj" />
+    <ProjectReference Include="..\PostComment.Infrastructure.Data\PostComment.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>

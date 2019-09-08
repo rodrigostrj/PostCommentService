@@ -1,11 +1,9 @@
-﻿using PostComment.Core.Interfaces;
-using PostComment.Core.SharedKernel;
+﻿using Microsoft.EntityFrameworkCore;
+using PostComment.Core.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace PostComment.Infrastructure.Data
 {

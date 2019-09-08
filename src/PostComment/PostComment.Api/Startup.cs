@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PostComment.Core.Interfaces;
 using PostComment.Core.Service;
+using PostComment.Infrastructure.Data;
 
 namespace PostComment.Api
 {
@@ -29,6 +32,13 @@ namespace PostComment.Api
             // Service DI
             //services.AddSingleton<IUsersService, UsersService>();
             services.AddSingleton<IPostItemService, PostItemService>();
+
+            var options = new DbContextOptionsBuilder<PostCommentDBContext>()
+                .UseInMemoryDatabase(databaseName: "postcomment")
+                .Options;
+                
+            services.AddSingleton<IUnitOfWork>(new UnitOfWork(options));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

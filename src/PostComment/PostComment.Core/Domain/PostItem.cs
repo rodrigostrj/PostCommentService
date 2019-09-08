@@ -6,7 +6,7 @@ namespace PostComment.Core.Domain
 {
     public class PostItem : TextItem
     {
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
 
         public IList<Comment> Comments { get; set; }
     }

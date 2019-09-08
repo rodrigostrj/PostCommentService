@@ -1,9 +1,6 @@
-﻿using PostComment.Core.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using PostComment.Core.Domain;
 using PostComment.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Text;
 
 namespace PostComment.Infrastructure.Data
 {
@@ -23,7 +20,8 @@ namespace PostComment.Infrastructure.Data
 
         public IRepository<Comment> CommentRepository => this._commentRepository;
 
-        public UnitOfWork()
+        public UnitOfWork(DbContextOptions<PostCommentDBContext> options)
+        : base(options)
         {
             this._userRepository = new Repository<User>(Users);
             this._postItemRepository = new Repository<PostItem>(PostItems);

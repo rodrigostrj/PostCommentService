@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using PostComment.Core.Domain;
+using PostComment.Core.Interfaces;
 
 namespace PostComment.Core.Service
 {
     public class PostItemService : IPostItemService
     {
+        private IUnitOfWork unitOfWork;
+
+        public PostItemService(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+        }
+
         public Task CreateComment(Comment comment)
         {
             throw new NotImplementedException();
@@ -23,9 +31,9 @@ namespace PostComment.Core.Service
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<PostItem>> GetAllPostsItems()
+        public async Task<IEnumerable<PostItem>> GetAllPostsItems()
         {
-            return null;
+            return this.unitOfWork.PostItemRepository.GetAll();
         }
 
         public Task<IEnumerable<Comment>> GetCommentsByPostItemId(int postId)
