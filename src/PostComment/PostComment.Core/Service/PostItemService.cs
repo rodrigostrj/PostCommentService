@@ -3,27 +3,45 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using PostComment.Core.Domain;
+using PostComment.Core.Domain.Errors;
 using PostComment.Core.Interfaces;
+using PostComment.Core.Service.Validators;
 
 namespace PostComment.Core.Service
 {
     public class PostItemService : IPostItemService
     {
-        private IUnitOfWork unitOfWork;
+        private IPostItemRepository postItemRepository;
+        private ICommentRepository commentRepository;
+        private PostValidator postValidator;
+        private CommentValidator commentValidator;
 
-        public PostItemService(IUnitOfWork unitOfWork)
+        public PostItemService(
+            IPostItemRepository postItemRepository,
+            ICommentRepository commentRepository,
+            PostValidator postValidator,
+            CommentValidator commentValidator)
         {
-            this.unitOfWork = unitOfWork;
+            this.postItemRepository = postItemRepository;
+            this.commentRepository = commentRepository;
+            this.postValidator = postValidator;
+            this.commentValidator = commentValidator;
         }
 
-        public Task CreateComment(Comment comment)
+        public async Task<IEnumerable<Error>> CreateComment(Comment comment)
         {
-            throw new NotImplementedException();
+            comment.CreateDate = DateTime.Now;
+            var errors = this.commentValidator.Validate(comment);
+            this.commentRepository.Add(comment);
+            return errors;
         }
 
-        public Task CreatePostItem(PostItem postItem)
+        public async Task<IEnumerable<Error>> CreatePostItem(PostItem postItem)
         {
-            throw new NotImplementedException();
+            postItem.CreateDate = DateTime.Now;
+            var errors = this.postValidator.Validate(postItem);
+            this.postItemRepository.Add(postItem);
+            return errors;
         }
 
         public Task DeletePostItem(int id)
@@ -33,17 +51,18 @@ namespace PostComment.Core.Service
 
         public async Task<IEnumerable<PostItem>> GetAllPostsItems()
         {
-            return this.unitOfWork.PostItemRepository.GetAll();
+            return this.postItemRepository.List;
         }
 
         public Task<IEnumerable<Comment>> GetCommentsByPostItemId(int postId)
         {
-            return null;
+            return this.commentRepository.FindByPostId(postId);
         }
 
-        public Task UpdatePostItem(PostItem postItem)
+        public async Task UpdatePostItem(PostItem postItem)
         {
-            throw new NotImplementedException();
+            postItem.UpdateDate = DateTime.Now;
+            this.postItemRepository.Update(postItem);
         }
     }
 }

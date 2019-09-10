@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.InMemory;
 using Microsoft.Extensions.DependencyInjection;
+using PostComment.Core.Domain;
 using PostComment.Core.Interfaces;
 using PostComment.Core.Service;
+using PostComment.Core.Service.Validators;
 using PostComment.Infrastructure.Data;
+using PostComment.Infrastructure.Data.Repository;
 
 namespace PostComment.Api
 {
@@ -25,20 +29,23 @@ namespace PostComment.Api
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
                 {   Version = "V1",
-                    Description = "API Test - Post and Comments"
+                    Description = "API Test - Post and Comments",
+                    Title = "API Test - Post and Comments",
                 });
             });
 
-            // Service DI
-            //services.AddSingleton<IUsersService, UsersService>();
+            // Services
             services.AddSingleton<IPostItemService, PostItemService>();
 
+            // Infra
             var options = new DbContextOptionsBuilder<PostCommentDBContext>()
                 .UseInMemoryDatabase(databaseName: "postcomment")
                 .Options;
-                
-            services.AddSingleton<IUnitOfWork>(new UnitOfWork(options));
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddSingleton<IPostItemRepository>(new PostItemRepository(new PostCommentDBContext(options)));
+            services.AddSingleton<ICommentRepository>(new CommentRepository(new PostCommentDBContext(options)));
+            services.AddSingleton<PostValidator, PostValidator>();
+            services.AddSingleton<CommentValidator, CommentValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostComment.Api", "PostComment.Api\PostComment.Api.csproj", "{1BD097BF-A514-4583-B65A-024CB496C522}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostComment.Api", "PostComment.Api\PostComment.Api.csproj", "{1BD097BF-A514-4583-B65A-024CB496C522}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Presentation", "1.Presentation", "{F8E4DA2F-DC75-4E76-AD5F-228F3D3FCEFC}"
 EndProject
@@ -13,13 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Core", "3.Core", "{353967
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Tests", "4.Tests", "{F86F16C3-6BCF-4CF0-8E77-1D9415AA3AC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostComment.Tests", "PostComment.Tests\PostComment.Tests.csproj", "{98CBBDAA-3300-4E55-923C-09AF94FE4242}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostComment.Core", "PostComment.Core\PostComment.Core.csproj", "{AB7D1267-71CD-42D6-AE3E-2FE668F95E8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostComment.Core", "PostComment.Core\PostComment.Core.csproj", "{AB7D1267-71CD-42D6-AE3E-2FE668F95E8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostComment.Infrastructure.Data", "PostComment.Infrastructure.Data\PostComment.Infrastructure.Data.csproj", "{42CFCFDD-20ED-457C-A655-3E79C0FE0CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostComment.Infrastructure.Data", "PostComment.Infrastructure.Data\PostComment.Infrastructure.Data.csproj", "{42CFCFDD-20ED-457C-A655-3E79C0FE0CF0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostComment.Infrastructure.CrossCuting", "PostComment.Infrastructure.CrossCuting\PostComment.Infrastructure.CrossCuting.csproj", "{A3398FB3-00F7-4AD2-A625-21FFB990D924}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostComment.Tests", "PostComment.Tests\PostComment.Tests.csproj", "{C952ABA0-170B-4738-9052-92619CE7B5A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{1BD097BF-A514-4583-B65A-024CB496C522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BD097BF-A514-4583-B65A-024CB496C522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BD097BF-A514-4583-B65A-024CB496C522}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98CBBDAA-3300-4E55-923C-09AF94FE4242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98CBBDAA-3300-4E55-923C-09AF94FE4242}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98CBBDAA-3300-4E55-923C-09AF94FE4242}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98CBBDAA-3300-4E55-923C-09AF94FE4242}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB7D1267-71CD-42D6-AE3E-2FE668F95E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB7D1267-71CD-42D6-AE3E-2FE668F95E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB7D1267-71CD-42D6-AE3E-2FE668F95E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,20 +37,19 @@ Global
 		{42CFCFDD-20ED-457C-A655-3E79C0FE0CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42CFCFDD-20ED-457C-A655-3E79C0FE0CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42CFCFDD-20ED-457C-A655-3E79C0FE0CF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3398FB3-00F7-4AD2-A625-21FFB990D924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3398FB3-00F7-4AD2-A625-21FFB990D924}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3398FB3-00F7-4AD2-A625-21FFB990D924}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3398FB3-00F7-4AD2-A625-21FFB990D924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C952ABA0-170B-4738-9052-92619CE7B5A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C952ABA0-170B-4738-9052-92619CE7B5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C952ABA0-170B-4738-9052-92619CE7B5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C952ABA0-170B-4738-9052-92619CE7B5A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1BD097BF-A514-4583-B65A-024CB496C522} = {F8E4DA2F-DC75-4E76-AD5F-228F3D3FCEFC}
-		{98CBBDAA-3300-4E55-923C-09AF94FE4242} = {F86F16C3-6BCF-4CF0-8E77-1D9415AA3AC0}
 		{AB7D1267-71CD-42D6-AE3E-2FE668F95E8A} = {3539671E-2EF1-4D70-8D26-E7D70E7BD6CC}
 		{42CFCFDD-20ED-457C-A655-3E79C0FE0CF0} = {2BDFFF76-4AB9-48FC-A524-A7FCF58F55A0}
-		{A3398FB3-00F7-4AD2-A625-21FFB990D924} = {2BDFFF76-4AB9-48FC-A524-A7FCF58F55A0}
+		{C952ABA0-170B-4738-9052-92619CE7B5A2} = {F86F16C3-6BCF-4CF0-8E77-1D9415AA3AC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0507F28C-7612-4026-9295-725397187EA9}

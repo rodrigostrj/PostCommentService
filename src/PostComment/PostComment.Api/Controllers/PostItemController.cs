@@ -22,14 +22,26 @@ namespace PostComment.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> PostItemAsync(PostItem postItem)
         {
-            await this.postItemService.CreatePostItem(postItem);
+            var result = await this.postItemService.CreatePostItem(postItem);
+
+            if (result.Count() > 0)
+            {
+                return StatusCode(400);
+            }
+
             return StatusCode(201);
         }
 
         [HttpPost("{id}/Comment")]
         public async Task<IActionResult> Comment(Comment comment)
         {
-            await this.postItemService.CreateComment(comment);
+            var result = await this.postItemService.CreateComment(comment);
+
+            if (result.Count() > 0)
+            {
+                return StatusCode(400);
+            }
+
             return StatusCode(201);
         }
 

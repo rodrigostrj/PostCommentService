@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  postcomment.api:
+    image: postcomment.api
+    build:
+      context: .
+    ports:
+      - "8080:80"
