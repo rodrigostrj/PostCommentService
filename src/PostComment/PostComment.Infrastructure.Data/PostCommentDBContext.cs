@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostComment.Core.Domain;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace PostComment.Infrastructure.Data
 {
