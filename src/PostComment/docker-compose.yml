@@ -5,15 +5,16 @@ volumes:
 
 services:
     db:
-         image: mysql:5.7
-         environment:
-           MYSQL_RANDOM_ROOT_PASSWORD: 1
-           MYSQL_DATABASE: postcomment_db
-           MYSQL_USER: dbuser
-           MYSQL_PASSWORD: 123admin
-         volumes:
-           - dbdata:/var/lib/mysql
-         restart: always
+    db:
+        image: mcmoe/mssqldocker:v2017.CU12.1
+        environment:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: 1p@sswordY
+          MSSQL_DB: postcommentdb
+          MSSQL_USER: postcommentdb_app
+          MSSQL_PASSWORD: 1p@sswordY
+        ports:
+            - "1433:1433"
 
     postcomment.api:
         depends_on:

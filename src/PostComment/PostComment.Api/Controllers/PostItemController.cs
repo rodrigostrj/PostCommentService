@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PostComment.Core.Domain;
+using PostComment.Core.DTO;
+using PostComment.Core.DTO.Command;
 using PostComment.Core.Service;
 
 namespace PostComment.Api.Controllers
@@ -20,9 +22,9 @@ namespace PostComment.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostItemAsync(PostItem postItem)
+        public async Task<IActionResult> PostItemAsync(PostItemDTO postItem)
         {
-            var result = await this.postItemService.CreatePostItem(postItem);
+            var result = await this.postItemService.CreatePostItem(postItem.ToDomain());
 
             if (result.Count() > 0)
             {

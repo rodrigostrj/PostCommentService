@@ -20,7 +20,11 @@ namespace PostComment.Infrastructure.Data.Repository
 
         public void Add(Comment comment)
         {
-            throw new NotImplementedException();
+            this.postCommentDBContext
+                .Comments
+                .Add(comment);
+
+            this.postCommentDBContext.SaveChanges();
         }
 
         public void Delete(int id)

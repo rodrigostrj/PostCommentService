@@ -28,6 +28,8 @@ namespace PostComment.Infrastructure.Data.Repository
             this.postCommentDBContext
                 .PostItems
                 .Add(postItem);
+
+            this.postCommentDBContext.SaveChanges();
         }
 
         public void Delete(int id)

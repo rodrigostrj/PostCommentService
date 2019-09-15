@@ -13,11 +13,13 @@ namespace PostComment.Api
     {
         public static void ConfigureRepositoryWrapper(this IServiceCollection services, IConfiguration config)
         {
-            var connectionString = config["mysqlconnection:connectionString"];
+            var connectionString = config["sqlconnection:connectionString"];
             var optionsBuilder = new DbContextOptionsBuilder<PostCommentDBContext>();
-            optionsBuilder.UseMySql(connectionString);
-            services.AddSingleton<IPostItemRepository>(new PostItemRepository(new PostCommentDBContext(optionsBuilder.Options)));
-            services.AddSingleton<ICommentRepository>(new CommentRepository(new PostCommentDBContext(optionsBuilder.Options)));
+            optionsBuilder.UseSqlServer(connectionString);
+            var context = new PostCommentDBContext(optionsBuilder.Options);
+            services.AddSingleton<IPostItemRepository>(new PostItemRepository(context));
+            services.AddSingleton<ICommentRepository>(new CommentRepository(context));
+            context.EnsureSeedDataForContext();
         }
 
         public static void ConfigureServiceWrapper(this IServiceCollection services)

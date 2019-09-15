@@ -8,6 +8,7 @@ namespace PostComment.Infrastructure.Data
         public PostCommentDBContext(DbContextOptions<PostCommentDBContext> options)
         : base(options)
         {
+            this.Database.EnsureCreated(); // Just for test
         }
         public DbSet<User> Users { get; set; }
         public DbSet<PostItem> PostItems { get; set; }
