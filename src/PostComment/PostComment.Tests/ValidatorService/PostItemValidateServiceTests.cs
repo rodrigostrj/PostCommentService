@@ -5,17 +5,24 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using PostComment.Core.Interfaces;
+using Moq;
 
 namespace PostComment.Tests.ValidatorService
 {
     [TestClass]
     public class PostItemValidateServiceTests
     {
+        private Mock<IUserRepository> userRepository;
         private IValidateService<PostItem> validatePostItemService;
 
         public PostItemValidateServiceTests()
         {
-            this.validatePostItemService = new PostValidator();
+            this.userRepository = new Mock<IUserRepository>();
+            this.userRepository
+                .Setup(x => x.FindById(1))
+                .Returns(new Core.Domain.User { Email = "fulano@gmail.com", Id = 1, UserName = "fulano" });
+            this.validatePostItemService = new PostValidator(this.userRepository.Object);
         }
 
         [TestMethod]
@@ -26,7 +33,7 @@ namespace PostComment.Tests.ValidatorService
             // Act
             var result = this.validatePostItemService.Validate(postItem);
             // Assert
-            Assert.IsTrue(result.Count() == 2);
+            Assert.IsTrue(result.Count() == 3);
             Assert.IsTrue(result.Any(x => x.Message == "Null postItem text"));
         }
 

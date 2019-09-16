@@ -12,5 +12,9 @@ namespace PostComment.Core.DTO
         {
             return new PostItem { Text = postItemDTO.Text, UserId = postItemDTO.UserId };
         }
+        public static Comment ToDomain(this CommentDTO commentDTO)
+        {
+            return new Comment { Text = commentDTO.Text };
+        }
     }
 }

@@ -5,7 +5,6 @@ volumes:
 
 services:
     db:
-    db:
         image: mcmoe/mssqldocker:v2017.CU12.1
         environment:
           ACCEPT_EULA: Y
@@ -24,3 +23,6 @@ services:
           context: .
         ports:
           - "8080:80"
+        environment:
+          - ASPNETCORE_ENVIRONMENT=staging
+        

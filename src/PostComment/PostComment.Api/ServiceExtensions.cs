@@ -19,6 +19,7 @@ namespace PostComment.Api
             var context = new PostCommentDBContext(optionsBuilder.Options);
             services.AddSingleton<IPostItemRepository>(new PostItemRepository(context));
             services.AddSingleton<ICommentRepository>(new CommentRepository(context));
+            services.AddSingleton<IUserRepository>(new UserRepository(context));
             context.EnsureSeedDataForContext();
         }
 

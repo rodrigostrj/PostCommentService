@@ -37,9 +37,10 @@ namespace PostComment.Infrastructure.Data.Repository
             throw new NotImplementedException();
         }
 
-        public PostItem FindById(int Id)
+        public PostItem FindById(int id)
         {
-            throw new NotImplementedException();
+            return this.postCommentDBContext
+                .Find<PostItem>(id);
         }
 
         public void Update(PostItem postItem)
