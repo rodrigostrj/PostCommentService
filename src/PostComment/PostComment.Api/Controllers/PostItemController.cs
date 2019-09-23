@@ -27,14 +27,16 @@ namespace PostComment.Api.Controllers
         [ProducesResponseType(400, Type = typeof(IEnumerable<Error>))]
         public async Task<IActionResult> PostItemAsync(PostItemDTO postItem)
         {
-            var result = await this.postItemService.CreatePostItem(postItem.ToDomain());
+            var _postItem = postItem.ToDomain();
+
+            var result = await this.postItemService.CreatePostItem(_postItem);
 
             if (result.Count() > 0)
             {
-                return StatusCode(400, result);
+                return StatusCode(StatusCodes.Status400BadRequest, result);
             }
 
-            return StatusCode(201);
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         [HttpPost("{id}/Comment")]
@@ -48,10 +50,10 @@ namespace PostComment.Api.Controllers
 
             if (result.Count() > 0)
             {
-                return StatusCode(400, result);
+                return StatusCode(StatusCodes.Status400BadRequest, result);
             }
 
-            return StatusCode(201);
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         [HttpDelete]
