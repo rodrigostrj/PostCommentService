@@ -1,4 +1,4 @@
-# Creating a .NetCore 2.2 Web Api + SQL Server Application with Docker Compose
+# Creating a Application .NetCore 2.2 Web Api + SQL Server with Docker Compose
 
 ## Description
 
@@ -31,8 +31,14 @@ ENTRYPOINT ["dotnet", "PostComment.Api.dll"]
 
 ```
 * Creating a Docker Image*
-$ docker build -t postcomment.api . * In the same folder*
-$ docker build -f [File Path Here] -t postcomment.api .  * Parsing the docker compose file as parameter*
+
+**In the same folder**
+$ docker build -t postcomment.api .
+
+**Parsing the docker compose file as parameter**
+$ docker build -f [File Path Here] -t postcomment.api .  
+
+## Running the image as a Container
 
 *.Net Core *
 $ docker run -d -p 8080:80 --name myapp postcomment.api
@@ -81,9 +87,14 @@ services:
 ```
 * Creating Docker Containers With Docker Compose*
 
-$ docker-compose up -d * In the same  folder *
-$ docker-compose -f [File Path Here] up -d * Parsing file as parameter *
-$ docker-compose up -d --force-recreate * Forcing container recreation *
+** In the same  folder **
+$ docker-compose up -d 
+
+** Parsing file as parameter **
+$ docker-compose -f [File Path Here] up -d 
+
+** Forcing container recreation **
+$ docker-compose up -d --force-recreate 
 
 
 ## Testing the application 
