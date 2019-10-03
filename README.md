@@ -28,8 +28,8 @@ WORKDIR /app
 COPY --from=build-env /app/PostComment.Api/out .
 
 ENTRYPOINT ["dotnet", "PostComment.Api.dll"]
-
 ```
+
 ### Creating a Docker Image
 
 **In the same folder**
@@ -89,6 +89,7 @@ services:
         environment:
           - ASPNETCORE_ENVIRONMENT=staging
 ```
+
 ### Creating Docker Containers With Docker Compose
 
 #### In the same  folder
