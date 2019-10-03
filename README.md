@@ -1,8 +1,10 @@
-# Description
+# Creating a .NetCore 2.2 Web Api +  SQL Server with Docker Compose
 
-The main propose of this article is show how to take advantaje in docker in order to use a basic .Net Core 2.2 enviroment. Creating a ASP.Net Core Web API with access to SQL Server. All the technologies used in this article are full open-source.
+## Description
 
-## The Application
+The main propose of this article is show how to take advantaje in docker in order to use a basic .Net Core 2.2 enviroment. Creating a ASP.Net Core Web API with access to Linux SQL Server. All the technologies used in this article are full open-source.
+
+### The Application
 
 It is application focoused on blog posts and comments publications. All the concerns here are regarding a backend development.
 
@@ -10,7 +12,7 @@ It is application focoused on blog posts and comments publications. All the conc
 
 The first concern on dockerizing a application is to create a docker image for your application. We´ll build two containers, one for our application and other for the database. The database image will be pulled from the cloud, and our only concern it is to pay attention with the configuration.
 
-## Application Docker Image
+## The Docker Image File
 
 https://github.com/rodrigostrj/PostCommentService/blob/master/src/PostComment/Dockerfile
 
@@ -26,16 +28,16 @@ WORKDIR /app
 COPY --from=build-env /app/PostComment.Api/out .
 
 ENTRYPOINT ["dotnet", "PostComment.Api.dll"]
+
 ```
+* Creating a Docker Image*
+$ docker build -t postcomment.api . * In the same folder*
+$ docker build -f [File Path Here] -t postcomment.api .  * Parsing the docker compose file as parameter*
 
-
-$ docker build -t postcomment.api .
-$ docker build -f [File Path Here] -t postcomment.api .
-
-## .Net Core
+*.Net Core *
 $ docker run -d -p 8080:80 --name myapp postcomment.api
 
-## SQL Server
+* SQL Server *
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_DB=postcomment_db' -e 'MSSQL_USER=yourDbUser' -e 'MSSQL_PASSWORD=yourDbPassword' -p 1433:1433 -d mcmoe/mssqldocker:v2017.CU12.1
 
 
@@ -43,6 +45,8 @@ docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_D
 
 A Docker Compose it is a yaml file with instructions to create containers. It is possible to create a full application. it is easier, at least in my opinion, work in this way instead using docker run for each expected application. 
 By executing one command line it is possible to perform all the previus commands even the build command for application.
+
+## Docker Compose File
 
 https://github.com/rodrigostrj/PostCommentService/blob/master/src/PostComment/docker-compose.yml
 
@@ -75,13 +79,21 @@ services:
         environment:
           - ASPNETCORE_ENVIRONMENT=staging
 ```
+* Creating Docker Containers With Docker Compose*
 
-$ docker-compose up -d
-$ docker-compose -f [File Path Here] up -d
-$ docker-compose up -d --force-recreate
+$ docker-compose up -d * In the same  folder *
+$ docker-compose -f [File Path Here] up -d * Parsing file as parameter *
+$ docker-compose up -d --force-recreate * Forcing container recreation *
 
+
+## Testing the application 
+
+After all it is easy to access the application and the data base created.
 
 http://localhost:8080/swagger/index.html
+
+
+
 
 
 
