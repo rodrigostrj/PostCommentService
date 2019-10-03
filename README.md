@@ -42,12 +42,13 @@ $ docker build -f [File Path Here] -t postcomment.api .
 
 ### Running the image as a Container
 
-####.Net Core 
+#### .Net Core 
 $ docker run -d -p 8080:80 --name myapp postcomment.api
 
 #### SQL Server 
 
-#####Atention to the enviroment variables "-e"
+##### Atention to the enviroment variables "-e"
+
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_DB=postcomment_db' -e 'MSSQL_USER=yourDbUser' -e 'MSSQL_PASSWORD=yourDbPassword' -p 1433:1433 -d mcmoe/mssqldocker:v2017.CU12.1
 
 ## Docker Compose
