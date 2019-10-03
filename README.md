@@ -92,7 +92,8 @@ After all it is easy to access the application and the data base created.
 
 http://localhost:8080/swagger/index.html
 
-!(Api Swagger Page)[https://github.com/rodrigostrj/PostCommentService/blob/master/miscellaneous/PostComent.png]
+![Api Swagger Page](https://github.com/rodrigostrj/PostCommentService/blob/master/miscellaneous/PostComent.png)
+
 
 
 
