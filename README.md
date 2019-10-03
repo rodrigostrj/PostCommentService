@@ -88,17 +88,16 @@ services:
         environment:
           - ASPNETCORE_ENVIRONMENT=staging
 ```
-* Creating Docker Containers With Docker Compose*
+### Creating Docker Containers With Docker Compose
 
-** In the same  folder **
+#### In the same  folder
 $ docker-compose up -d 
 
-** Parsing file as parameter **
+#### Parsing file as parameter 
 $ docker-compose -f [File Path Here] up -d 
 
-** Forcing container recreation **
+#### Forcing container recreation 
 $ docker-compose up -d --force-recreate 
-
 
 ## Testing the application 
 
