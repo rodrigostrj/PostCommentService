@@ -1,4 +1,4 @@
-# Creating a .NetCore 2.2 Web Api +  SQL Server with Docker Compose
+# Creating a .NetCore 2.2 Web Api + SQL Server Application with Docker Compose
 
 ## Description
 
