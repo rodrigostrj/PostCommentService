@@ -8,11 +8,11 @@ The main propose of this article is show how to take advantaje in docker in orde
 
 It is application focoused on blog posts and comments publications. All the concerns here are regarding a backend development.
 
-# Docker Images
+## Docker Images
 
 The first concern on dockerizing a application is to create a docker image for your application. We´ll build two containers, one for our application and other for the database. The database image will be pulled from the cloud, and our only concern it is to pay attention with the configuration.
 
-## The Docker Image File
+### The Docker Image File
 
 https://github.com/rodrigostrj/PostCommentService/blob/master/src/PostComment/Dockerfile
 
@@ -42,16 +42,15 @@ $ docker build -f [File Path Here] -t postcomment.api .
 
 ### Running the image as a Container
 
-**.Net Core **
-
+####.Net Core 
 $ docker run -d -p 8080:80 --name myapp postcomment.api
 
-**SQL Server **
+#### SQL Server 
 
+#####Atention to the enviroment variables "-e"
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_DB=postcomment_db' -e 'MSSQL_USER=yourDbUser' -e 'MSSQL_PASSWORD=yourDbPassword' -p 1433:1433 -d mcmoe/mssqldocker:v2017.CU12.1
 
-
-# Docker Compose
+## Docker Compose
 
 A Docker Compose it is a yaml file with instructions to create containers. It is possible to create a full application. it is easier, at least in my opinion, work in this way instead using docker run for each expected application. 
 By executing one command line it is possible to perform all the previus commands even the build command for application.
@@ -108,11 +107,6 @@ After all it is easy to access the application and the data base created.
 http://localhost:8080/swagger/index.html
 
 ![Api Swagger Page](https://github.com/rodrigostrj/PostCommentService/blob/master/miscellaneous/PostComent.png)
-
-
-
-
-
 
 
 
