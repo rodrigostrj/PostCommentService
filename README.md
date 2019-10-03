@@ -30,20 +30,24 @@ COPY --from=build-env /app/PostComment.Api/out .
 ENTRYPOINT ["dotnet", "PostComment.Api.dll"]
 
 ```
-* Creating a Docker Image*
+### Creating a Docker Image
 
 **In the same folder**
+
 $ docker build -t postcomment.api .
 
 **Parsing the docker compose file as parameter**
+
 $ docker build -f [File Path Here] -t postcomment.api .  
 
-## Running the image as a Container
+### Running the image as a Container
 
-*.Net Core *
+**.Net Core **
+
 $ docker run -d -p 8080:80 --name myapp postcomment.api
 
-* SQL Server *
+**SQL Server **
+
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_DB=postcomment_db' -e 'MSSQL_USER=yourDbUser' -e 'MSSQL_PASSWORD=yourDbPassword' -p 1433:1433 -d mcmoe/mssqldocker:v2017.CU12.1
 
 
