@@ -6,6 +6,7 @@ volumes:
 services:
     db:
         image: mcmoe/mssqldocker:v2017.CU12.1
+        container_name: database_postcomment
         environment:
           ACCEPT_EULA: Y
           SA_PASSWORD: 1p@sswordY
@@ -16,6 +17,7 @@ services:
             - "1433:1433"
 
     postcomment.api:
+        container_name: api_postcomment
         depends_on:
            - db
         image: postcomment.api
